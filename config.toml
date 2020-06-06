@@ -1,0 +1,94 @@
+# Site settings
+baseurl = "/"
+languageCode = "fr-fr"
+title = "Qastia"
+theme = "syna"
+enableGitInfo = true
+version = "0.16.1"
+
+# Google Analytics tracking
+googleAnalytics = "UA-128691441-1"
+
+[outputs]
+  home = ["HTML", "JSON"]
+
+[frontmatter]
+date = ["date", "lastmod"]
+lastmod = ["lastmod", ":git", "date"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+     unsafe = true
+
+[params]
+  name = "Qastia"
+  description = "Qastia Coworking / Consulting"
+
+  [params.style]
+    #background = "secondary"
+
+  # Theme customizations
+  # Assets relative to 'static/'
+  [params.custom]
+    favicon = "favicon.png"
+    favicon_ico_sizes = "16x16 32x32"
+    favicon_png = "favicon.png"
+    favicon_svg = "favicon.svg"
+
+  # Optional, global disable switch for fontawesome related files
+  # For custom fontawesome js files use the custom.js method
+  [params.fontawesome]
+    disabled = false
+    pro = false
+
+  [params.colors]
+    primary = "#00838F"
+    secondary = "#868e96"
+    success = "#008f54"
+    info = "#00c9dc"
+    warning = "#fdf314"
+    danger = "#dc1200"
+    light = "#f8f9fa"
+    dark = "#343a40"
+
+# main/prepend/postpend menus are displayed in nav fragment.
+# Keep an eye out for updates. These will be moved out to make navbar more
+# configurable.
+[[menu.main]]
+  url = "/"
+  name = "Consulting"
+  weight = 10
+
+[[menu.main]]
+  url = "/coworking"
+  name = "Coworking"
+  weight = 20
+
+[[menu.main]]
+  url = "/references"
+  name = "Références"
+  weight = 30
+
+[[menu.main]]
+  url = "/#contact"
+  name = "Contact"
+  weight = 40
+
+
+[[menu.footer]]
+  url = "https://www.preuilly.net/"
+  name = "Site de Preuilly-sur-Claise"
+  weight = 10
+
+[[menu.footer_social]]
+  weight = 10
+  name = "linkedind"
+  url = "https://www.linkedin.com/in/bjalon"
+  pre = "fab fa-linkedin-in"
+
+[[menu.footer_social]]
+  weight = 30
+  name = "github"
+  url = "https://github.com/bjalon"
+  pre = "fab fa-github fa-stack-2x"
