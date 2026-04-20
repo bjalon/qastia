@@ -40,3 +40,14 @@ config.toml   Configuration reprise pour la navigation et les liens
 - Netlify build: `npm run build`
 - Répertoire publié: `dist`
 - Le script `deploy.sh` pousse aussi `dist/`
+- GitHub Pages: workflow [deploy-pages.yml](/home/bjalon/projects/qastia/qastia/.github/workflows/deploy-pages.yml)
+
+## GitHub Pages
+
+Le workflow GitHub Actions publie automatiquement sur GitHub Pages à chaque push sur `master`.
+
+Points importants :
+
+- Le build Pages utilise automatiquement `BASE_PATH=/<repo>/`
+- `dist/404.html` est généré à partir de `index.html` pour laisser fonctionner le routing SPA
+- Dans les réglages GitHub du dépôt, Pages doit être configuré sur `GitHub Actions`
