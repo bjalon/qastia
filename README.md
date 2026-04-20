@@ -48,6 +48,6 @@ Le workflow GitHub Actions publie automatiquement sur GitHub Pages à chaque pus
 
 Points importants :
 
-- Le build Pages utilise automatiquement `BASE_PATH=/<repo>/`
+- Le build Pages publie le site à la racine `/`, ce qui est nécessaire pour le domaine custom `www.qastia.com`
 - `dist/404.html` est généré à partir de `index.html` pour laisser fonctionner le routing SPA
 - Dans les réglages GitHub du dépôt, Pages doit être configuré sur `GitHub Actions`
