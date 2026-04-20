@@ -19,5 +19,4 @@ menu_title = "Liens utiles"
 1Bis Avenue Léon Berthier
 37290 Preuilly
 </a>
-Tel : <a href="tel://09 50 57 26 81">09 50 57 26 81</a><br>
 Email : <a href="mailto:contact@qastia.com">contact@qastia.com</a><br>
