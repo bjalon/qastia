@@ -1,19 +1,17 @@
 [build]
-  publish = "public"
-  command = "hugo"
+  publish = "dist"
+  command = "npm run build"
 
 [context.production.environment]
-  HUGO_VERSION = "0.62.2"
-  HUGO_ENV = "production"
+  NODE_VERSION = "20"
 
 [context.deploy-preview]
-  command = "hugo -b $DEPLOY_PRIME_URL"
-
-[context.deploy-preview.environment]
-  HUGO_VERSION = "0.62.2"
+  command = "npm run build"
 
 [context.branch-deploy]
-  command = "hugo -b $DEPLOY_PRIME_URL"
+  command = "npm run build"
 
-[context.branch-deploy.environment]
-HUGO_VERSION = "0.62.2"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

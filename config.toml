@@ -23,7 +23,6 @@ lastmod = ["lastmod", ":git", "date"]
 
 [params]
   name = "Qastia"
-  description = "Qastia Coworking / Consulting"
 
   [params.style]
     #background = "secondary"

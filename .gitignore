@@ -2,3 +2,5 @@ public/
 dev/**
 resources/_gen
 themes/syna
+dist/
+node_modules/

@@ -14,8 +14,6 @@ menu_title = "Liens utiles"
 #   url = "#"
 +++
 
-<img height="60px" src="/images/logo.png"/>
-
 <h4>Travailler et Vivre</h4>
 <a href="https://goo.gl/maps/Lj6Zc1S4P1tsdqAN9">
 1Bis Avenue Léon Berthier
@@ -23,4 +21,3 @@ menu_title = "Liens utiles"
 </a>
 Tel : <a href="tel://09 50 57 26 81">09 50 57 26 81</a><br>
 Email : <a href="mailto:contact@qastia.com">contact@qastia.com</a><br>
-
