@@ -283,6 +283,7 @@ const referenceDetails = [
     .replace('/reference-list/enedis', '/reference-list/enedis')
     .replace('/reference-list/', ''),
   title: entry.meta.title,
+  body: entry.content.body,
   html: entry.content.html,
 }));
 
@@ -306,9 +307,18 @@ const references = referenceMemberFiles
 
 const referencePages = references.map((item) => {
   const detail = referenceDetails.find((entry) => entry.slug === item.slug);
+  const detailSummary = detail?.body
+    ? excerpt(
+        detail.body
+          .replace(/<img[^>]*>/g, ' ')
+          .replace(/___/g, ' '),
+        180,
+      )
+    : '';
 
   return {
     ...item,
+    summary: detailSummary || item.summary,
     html: detail?.html ?? '',
   };
 });

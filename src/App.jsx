@@ -144,6 +144,28 @@ function LogoBadge({ src, alt, size = 'card' }) {
   );
 }
 
+function ReferenceCard({ item, navigate, titleTag = 'h3', showLocation = false, ctaLabel = 'En savoir plus', ctaClassName = 'text-link' }) {
+  const TitleTag = titleTag;
+
+  return (
+    <article className="panel reference-card">
+      <div className="reference-card-media">
+        <LogoBadge src={item.image} alt={`Logo ${item.title}`} />
+      </div>
+
+      <div className="reference-card-body">
+        <TitleTag>{item.title}</TitleTag>
+        <p className="card-meta reference-card-role">{item.position}</p>
+        {showLocation ? <p className="card-meta reference-card-location">{item.location}</p> : null}
+        {item.summary ? <p className="reference-card-summary">{item.summary}</p> : null}
+        <SmartLink href={`/reference-list/${item.slug}`} navigate={navigate} className={ctaClassName}>
+          {ctaLabel}
+        </SmartLink>
+      </div>
+    </article>
+  );
+}
+
 function Header({ currentPath, navigate }) {
   return (
     <header className="site-header">
@@ -202,9 +224,8 @@ function HomePage({ navigate }) {
   return (
     <>
       <PageHero
-        eyebrow="Consulting"
         title={siteData.home.title}
-        description={siteData.home.description}
+        description="Conseil en production logicielle, structuration d’équipes et accompagnement de projets à forte valeur métier."
         image={siteData.home.heroImage}
         visualVariant="home"
       />
@@ -271,15 +292,7 @@ function HomePage({ navigate }) {
 
         <div className="card-grid">
           {siteData.references.items.map((item) => (
-            <article key={item.slug} className="panel reference-card">
-              <LogoBadge src={item.image} alt={`Logo ${item.title}`} />
-              <h3>{item.title}</h3>
-              <p className="card-meta">{item.position}</p>
-              <p>{item.summary}</p>
-              <SmartLink href={`/reference-list/${item.slug}`} navigate={navigate} className="text-link">
-                En savoir plus
-              </SmartLink>
-            </article>
+            <ReferenceCard key={item.slug} item={item} navigate={navigate} />
           ))}
         </div>
       </section>
@@ -291,9 +304,8 @@ function CoworkingPage() {
   return (
     <>
       <PageHero
-        eyebrow="Coworking"
         title={siteData.coworking.title}
-        description={siteData.coworking.description}
+        description="Un espace de travail partagé à Preuilly-sur-Claise, pensé pour les métiers du numérique, le travail à distance et les échanges entre indépendants."
         image={siteData.coworking.heroImage}
         visualVariant="home"
       />
@@ -322,9 +334,8 @@ function ReferencesPage({ navigate }) {
   return (
     <>
       <PageHero
-        eyebrow="Références"
         title={siteData.references.title}
-        description="Des projets menés du cadrage jusqu’à la mise en production."
+        description="Une sélection de missions menées par Qastia, du cadrage métier à la mise en production, dans des contextes techniques et organisationnels exigeants."
         image={siteData.references.heroImage}
         visualVariant="home"
       />
@@ -332,16 +343,15 @@ function ReferencesPage({ navigate }) {
       <section className="section-stack">
         <div className="card-grid">
           {siteData.references.items.map((item) => (
-            <article key={item.slug} className="panel reference-card">
-              <LogoBadge src={item.image} alt={`Logo ${item.title}`} />
-              <h2>{item.title}</h2>
-              <p className="card-meta">{item.position}</p>
-              <p className="card-meta">{item.location}</p>
-              <p>{item.summary}</p>
-              <SmartLink href={`/reference-list/${item.slug}`} navigate={navigate} className="cta-link">
-                Lire la référence
-              </SmartLink>
-            </article>
+            <ReferenceCard
+              key={item.slug}
+              item={item}
+              navigate={navigate}
+              titleTag="h2"
+              showLocation
+              ctaLabel="Lire la référence"
+              ctaClassName="cta-link"
+            />
           ))}
         </div>
       </section>
@@ -353,9 +363,8 @@ function ReferenceDetailPage({ reference, navigate }) {
   return (
     <>
       <PageHero
-        eyebrow="Référence"
         title={reference.title}
-        description={reference.position}
+        description={`${reference.position} · ${reference.location}`}
         compact
       />
 
@@ -381,9 +390,8 @@ function BlogPage({ navigate }) {
   return (
     <>
       <PageHero
-        eyebrow="Blog"
         title={siteData.blog.title}
-        description="Archives techniques et billets d’expérience."
+        description="Articles, retours d’expérience et archives techniques publiés par Qastia."
         compact
       />
 
@@ -409,9 +417,8 @@ function BlogDetailPage({ article, navigate }) {
   return (
     <>
       <PageHero
-        eyebrow="Blog"
         title={article.title}
-        description={article.dateLabel}
+        description={article.dateLabel ? `Archive publiée le ${article.dateLabel}.` : 'Archive du blog Qastia.'}
         compact
       />
 
@@ -441,9 +448,8 @@ function ThankYouPage({ navigate }) {
   return (
     <>
       <PageHero
-        eyebrow="Message envoyé"
         title={siteData.thankYou.title}
-        description="Nous avons bien reçu votre demande."
+        description="Votre message a bien été transmis. Nous reviendrons vers vous rapidement."
         compact
       />
 
@@ -463,7 +469,6 @@ function NotFoundPage({ navigate }) {
   return (
     <>
       <PageHero
-        eyebrow="404"
         title="Page introuvable"
         description="Le contenu demandé n’existe pas ou plus à cette adresse."
         compact
